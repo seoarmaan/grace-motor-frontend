@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
     Wrench,
@@ -10,36 +11,62 @@ import {
     Bike,
     Clock,
     ShieldCheck,
+    ChevronRight,
+    CheckCircle,
 } from "lucide-react";
 
 const services = [
     {
-        title: "Bike Wash Service",
-        icon: <Droplets size={40} />,
+        title: "Premium Bike Wash",
+        icon: <Droplets size={45} />,
         description:
-            "Complete premium bike washing service including foam wash, polishing, and detailing for all bike models.",
-        price: "Starting at ₹299",
+            "Complete foam wash, polishing, detailing, and deep cleaning service.",
+        price: "₹299",
+        features: [
+            "Foam Wash",
+            "Water Polish",
+            "Chain Cleaning",
+            "Tire Shine",
+        ],
     },
     {
-        title: "Oil Change",
-        icon: <Fuel size={40} />,
+        title: "Engine Oil Change",
+        icon: <Fuel size={45} />,
         description:
-            "High-quality engine oil replacement for smooth bike performance and longer engine life.",
-        price: "Starting at ₹499",
+            "Premium engine oil replacement for smooth and efficient performance.",
+        price: "₹499",
+        features: [
+            "Engine Oil",
+            "Filter Check",
+            "Performance Test",
+            "Brake Inspection",
+        ],
     },
     {
-        title: "Engine Repair",
-        icon: <Wrench size={40} />,
+        title: "Bike Repair",
+        icon: <Wrench size={45} />,
         description:
-            "Professional bike engine diagnostics and repair services handled by expert mechanics.",
-        price: "Starting at ₹999",
+            "Professional diagnostics and repair service by expert mechanics.",
+        price: "₹999",
+        features: [
+            "Engine Check",
+            "Brake Repair",
+            "Electrical Repair",
+            "Performance Tuning",
+        ],
     },
     {
-        title: "Doorstep Bike Service",
-        icon: <Bike size={40} />,
+        title: "Doorstep Service",
+        icon: <Bike size={45} />,
         description:
-            "Convenient doorstep bike servicing without visiting workshops. Fast and reliable service at your location.",
-        price: "Starting at ₹699",
+            "Convenient doorstep servicing with pickup and drop support.",
+        price: "₹699",
+        features: [
+            "Pickup & Drop",
+            "On-site Service",
+            "Quick Delivery",
+            "Service Warranty",
+        ],
     },
 ];
 
@@ -48,97 +75,178 @@ export default function ServicesPage() {
         <>
             <Navbar />
 
-            <main className="bg-gray-100 overflow-hidden">
+            <main className="overflow-hidden bg-white">
                 {/* HERO SECTION */}
-                <section className="relative bg-black text-white min-h-[80vh] flex items-center justify-center px-6">
-                    <div className="absolute inset-0 bg-[url('/bike-service.jpg')] bg-cover bg-center opacity-30"></div>
+                <section
+                    className="relative min-h-[85vh] flex items-center justify-center bg-fixed bg-cover bg-center"
+                    style={{
+                        backgroundImage:
+                            "url('/serviceOne.jpg')",
+                    }}
+                >
+                    {/* OVERLAY */}
+                    <div className="absolute inset-0 bg-black/75"></div>
 
-                    <div className="relative z-10 text-center max-w-4xl">
+                    {/* GLOW EFFECT */}
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-yellow-500/10 via-transparent to-yellow-500/10"></div>
+
+                    <div className="relative z-10 text-center px-6 max-w-5xl">
+                        {/* BREADCRUMB */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="flex justify-center items-center gap-3 text-yellow-400 mb-8 uppercase tracking-[4px]"
+                        >
+                            <Link href="/" className="hover:text-white transition">
+                                Home
+                            </Link>
+
+                            <ChevronRight size={18} />
+
+                            <span className="text-white">
+                                Services
+                            </span>
+                        </motion.div>
+
+                        {/* TITLE */}
                         <motion.h1
-                            initial={{ opacity: 0, y: -80 }}
+                            initial={{ opacity: 0, y: 80 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1 }}
-                            className="text-5xl md:text-7xl font-bold leading-tight"
-                        >
-                            Professional Doorstep Bike Services
+                            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"                        >
+                            Professional Bike Services
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 1 }}
-                            className="mt-6 text-lg md:text-xl text-gray-300"
-                        >
-                            Affordable bike repair, washing, oil change,
-                            and maintenance services at your doorstep.
+                            transition={{ delay: 0.4 }}
+                            className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 leading-7 sm:leading-8"                        >
+                            Affordable doorstep bike repair, bike wash,
+                            oil change, and maintenance services for all
+                            bike brands.
                         </motion.p>
 
+                        {/* BUTTONS */}
                         <motion.div
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1 }}
-                            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-                        >
-                            <button className="bg-yellow-400 text-black px-8 py-4 rounded-xl font-semibold hover:bg-yellow-300 transition">
+                            transition={{ delay: 0.8 }}
+                            className="mt-10 flex flex-col md:flex-row gap-4 justify-center items-center"                        >
+                            <Link
+                                href="/booking"
+                                className="bg-yellow-400 text-black px-10 py-5 rounded-2xl font-semibold hover:bg-yellow-300 transition shadow-2xl"
+                            >
                                 Book Service
-                            </button>
+                            </Link>
 
-                            <button className="border border-white px-8 py-4 rounded-xl hover:bg-white hover:text-black transition">
+                            <a
+                                href="tel:+919876543210"
+                                className="border border-white text-white px-10 py-5 rounded-2xl hover:bg-white hover:text-black transition"
+                            >
                                 Call Now
-                            </button>
+                            </a>
                         </motion.div>
                     </div>
                 </section>
 
-                {/* SERVICES SECTION */}
-                <section className="py-24 px-6">
+                {/* SERVICES */}
+                <section className="py-20 md:py-28 px-4 sm:px-6 bg-gray-100">
                     <div className="max-w-7xl mx-auto">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.7 }}
-                            viewport={{ once: true }}
-                            className="text-5xl font-bold text-center"
-                        >
-                            Our Bike Services
-                        </motion.h2>
+                        {/* HEADING */}
+                        <div className="text-center">
+                            <motion.h2
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="text-5xl md:text-6xl font-bold text-black"
+                            >
+                                Service Packages
+                            </motion.h2>
 
-                        <p className="text-center text-gray-600 mt-6 max-w-3xl mx-auto text-lg">
-                            We provide reliable and affordable bike
-                            maintenance services with experienced
-                            mechanics and high-quality spare parts.
-                        </p>
+                            <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto leading-8">
+                                Choose the perfect bike maintenance
+                                package with transparent pricing and
+                                trusted service quality.
+                            </p>
+                        </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-16">
+                        {/* CARDS */}
+                        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-10 mt-16">
                             {services.map((service, index) => (
                                 <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 80 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: index * 0.2 }}
                                     viewport={{ once: true }}
-                                    whileHover={{ scale: 1.05 }}
-                                    className="bg-white p-8 rounded-3xl shadow-xl border border-gray-200"
+                                    transition={{ delay: index * 0.15 }}
+                                    whileHover={{
+                                        y: -12,
+                                        scale: 1.02,
+                                    }}
+                                    className="relative bg-white rounded-[30px] overflow-hidden shadow-xl border border-gray-200 group"
                                 >
-                                    <div className="text-yellow-500">
-                                        {service.icon}
+                                    {/* TOP BAR */}
+                                    <div className="h-2 bg-yellow-400"></div>
+
+                                    {/* CONTENT */}
+                                    <div className="p-6 sm:p-8 lg:p-10">
+                                        {/* ICON */}
+                                        <div className="bg-yellow-100 text-yellow-500 w-20 h-20 rounded-3xl flex items-center justify-center group-hover:bg-yellow-400 group-hover:text-black transition">
+                                            {service.icon}
+                                        </div>
+
+                                        {/* TITLE */}
+                                        <h3 className="text-3xl font-bold mt-8 text-black leading-tight">
+                                            {service.title}
+                                        </h3>
+
+                                        {/* DESCRIPTION */}
+                                        <p className="mt-5 text-gray-600 leading-8">
+                                            {service.description}
+                                        </p>
+
+                                        {/* PRICE */}
+                                        <div className="mt-8">
+                                            <span className="text-gray-500">
+                                                Starting From
+                                            </span>
+
+                                            <h4 className="text-4xl md:text-5xl font-bold text-black mt-2">
+                                                {service.price}
+                                            </h4>
+                                        </div>
+
+                                        {/* FEATURES */}
+                                        <div className="mt-8 space-y-4">
+                                            {service.features.map(
+                                                (feature, i) => (
+                                                    <div
+                                                        key={i}
+                                                        className="flex items-center gap-3"
+                                                    >
+                                                        <CheckCircle
+                                                            size={20}
+                                                            className="text-yellow-500"
+                                                        />
+
+                                                        <span className="text-gray-700">
+                                                            {feature}
+                                                        </span>
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+
+                                        {/* BUTTON */}
+                                        <Link
+                                            href="/booking"
+                                            className="block mt-10 bg-black text-white text-center py-4 rounded-2xl font-semibold hover:bg-yellow-400 hover:text-black transition"
+                                        >
+                                            Book Now
+                                        </Link>
                                     </div>
-
-                                    <h3 className="text-2xl font-bold mt-6">
-                                        {service.title}
-                                    </h3>
-
-                                    <p className="text-gray-600 mt-4 leading-7">
-                                        {service.description}
-                                    </p>
-
-                                    <p className="mt-6 text-xl font-semibold text-black">
-                                        {service.price}
-                                    </p>
-
-                                    <button className="mt-6 w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition">
-                                        Book Now
-                                    </button>
                                 </motion.div>
                             ))}
                         </div>
@@ -146,129 +254,95 @@ export default function ServicesPage() {
                 </section>
 
                 {/* WHY CHOOSE US */}
-                <section className="bg-black text-white py-24 px-6">
+                <section className="py-28 px-6 bg-black text-white">
                     <div className="max-w-7xl mx-auto">
-                        <motion.h2
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 1 }}
-                            viewport={{ once: true }}
-                            className="text-5xl font-bold text-center"
-                        >
-                            Why Choose Grace Motor Services?
-                        </motion.h2>
+                        <div className="text-center">
+                            <h2 className="text-5xl md:text-6xl font-bold">
+                                Why Choose Grace Motor?
+                            </h2>
+                        </div>
 
-                        <div className="grid md:grid-cols-3 gap-10 mt-16">
-                            <motion.div
-                                whileHover={{ y: -10 }}
-                                className="bg-gray-900 p-8 rounded-3xl"
-                            >
-                                <Clock size={50} className="text-yellow-400" />
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 mt-16">
+                            {[
+                                {
+                                    icon: <Clock size={55} />,
+                                    title: "Fast Service",
+                                    desc: "Quick and reliable servicing with minimal waiting time.",
+                                },
+                                {
+                                    icon: <ShieldCheck size={55} />,
+                                    title: "Trusted Mechanics",
+                                    desc: "Experienced professionals for premium bike repair.",
+                                },
+                                {
+                                    icon: <Bike size={55} />,
+                                    title: "Doorstep Pickup",
+                                    desc: "Pickup and drop support for customer convenience.",
+                                },
+                            ].map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    whileHover={{ y: -10 }}
+                                    className="bg-gray-900 p-10 rounded-[30px] border border-gray-800"
+                                >
+                                    <div className="text-yellow-400">
+                                        {item.icon}
+                                    </div>
 
-                                <h3 className="text-2xl font-bold mt-6">
-                                    Fast Service
-                                </h3>
+                                    <h3 className="text-3xl font-bold mt-8">
+                                        {item.title}
+                                    </h3>
 
-                                <p className="text-gray-300 mt-4">
-                                    Quick and reliable bike servicing at
-                                    your doorstep with minimal waiting time.
-                                </p>
-                            </motion.div>
-
-                            <motion.div
-                                whileHover={{ y: -10 }}
-                                className="bg-gray-900 p-8 rounded-3xl"
-                            >
-                                <ShieldCheck
-                                    size={50}
-                                    className="text-yellow-400"
-                                />
-
-                                <h3 className="text-2xl font-bold mt-6">
-                                    Trusted Mechanics
-                                </h3>
-
-                                <p className="text-gray-300 mt-4">
-                                    Experienced professionals ensuring safe
-                                    and quality repairs for all bikes.
-                                </p>
-                            </motion.div>
-
-                            <motion.div
-                                whileHover={{ y: -10 }}
-                                className="bg-gray-900 p-8 rounded-3xl"
-                            >
-                                <Bike size={50} className="text-yellow-400" />
-
-                                <h3 className="text-2xl font-bold mt-6">
-                                    Doorstep Pickup
-                                </h3>
-
-                                <p className="text-gray-300 mt-4">
-                                    Hassle-free pickup and drop service for
-                                    maximum customer convenience.
-                                </p>
-                            </motion.div>
+                                    <p className="mt-5 text-gray-300 leading-8">
+                                        {item.desc}
+                                    </p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </section>
 
-                {/* SEO CONTENT SECTION */}
-                <section className="py-24 px-6 bg-white">
-                    <div className="max-w-5xl mx-auto">
-                        <h2 className="text-4xl font-bold">
-                            Doorstep Bike Service Near Me
-                        </h2>
-
-                        <p className="mt-6 text-gray-600 leading-8 text-lg">
-                            Looking for reliable doorstep bike service
-                            near you? Grace Motor Services offers
-                            affordable bike repair, oil change, bike
-                            wash, and maintenance solutions for all
-                            major bike brands.
-                        </p>
-
-                        <p className="mt-6 text-gray-600 leading-8 text-lg">
-                            Our professional mechanics provide fast and
-                            trusted bike servicing with pickup and drop
-                            support. Whether you need emergency repair,
-                            periodic maintenance, or complete bike
-                            detailing, we deliver premium services at
-                            your convenience.
-                        </p>
-
-                        <p className="mt-6 text-gray-600 leading-8 text-lg">
-                            We specialize in doorstep bike repair and
-                            bike wash services with transparent pricing
-                            and customer satisfaction.
-                        </p>
-                    </div>
-                </section>
-
                 {/* CTA SECTION */}
-                <section className="bg-yellow-400 py-20 px-6 text-center">
-                    <motion.h2
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.7 }}
-                        viewport={{ once: true }}
-                        className="text-5xl font-bold text-black"
-                    >
-                        Book Your Bike Service Today
-                    </motion.h2>
+                <section
+                    className="relative py-40 bg-fixed bg-cover bg-center"
+                    style={{
+                        backgroundImage:
+                            "url('/serviceTwo.avif')",
+                    }}
+                >
+                    <div className="absolute inset-0 bg-black/75"></div>
 
-                    <p className="mt-6 text-lg text-black">
-                        Fast, affordable, and trusted bike servicing.
-                    </p>
+                    <div className="relative z-10 max-w-4xl mx-auto text-center px-6">
+                        <motion.h2
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight"
+                        >
+                            Ready To Service Your Bike?
+                        </motion.h2>
 
-                    <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-                        <button className="bg-black text-white px-8 py-4 rounded-xl hover:bg-gray-900 transition">
-                            Book Now
-                        </button>
+                        <p className="mt-8 text-lg text-gray-300 leading-8">
+                            Book trusted and affordable doorstep bike
+                            service today.
+                        </p>
 
-                        <button className="bg-white text-black px-8 py-4 rounded-xl hover:bg-gray-200 transition">
-                            WhatsApp Us
-                        </button>
+                        <div className="mt-10 flex flex-col md:flex-row gap-4 justify-center items-center">
+                            <Link
+                                href="/booking"
+                                className="bg-yellow-400 text-black px-10 py-5 rounded-2xl font-semibold hover:bg-yellow-300 transition"
+                            >
+                                Book Now
+                            </Link>
+
+                            <a
+                                href="https://wa.me/919876543210"
+                                target="_blank"
+                                className="border border-white text-white px-10 py-5 rounded-2xl hover:bg-white hover:text-black transition"
+                            >
+                                WhatsApp Us
+                            </a>
+                        </div>
                     </div>
                 </section>
             </main>
