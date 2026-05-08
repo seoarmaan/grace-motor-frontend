@@ -60,8 +60,14 @@ const highlights = [
 ];
 
 export default function HomePage() {
-  const [posts, setPosts] = useState<any[]>([]);
-
+  type Post = {
+    id: string;
+    title: string;
+    excerpt: string;
+    slug: string;
+  };
+  // const [posts, setPosts] = useState<any[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   useEffect(() => {
     async function fetchPosts() {
       try {
@@ -263,7 +269,8 @@ export default function HomePage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-              {posts.map((post: any) => (
+              {/* {posts.map((post: any) => ( */}
+              {posts.map((post: Post) => (
                 <motion.div
                   key={post.id}
                   whileHover={{ y: -10 }}
